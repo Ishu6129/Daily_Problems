@@ -1,0 +1,24 @@
+// Last updated: 31/07/2025, 19:34:29
+class Solution {
+    public int majorityElement(int[] arr) {
+        int n = arr.length;
+        int e=1;
+        int v=arr[0];
+        for(int i=1;i<n;i++){
+            if (v==arr[i]){
+                e++;
+            }
+            else{
+                if (e>1){
+                e--;
+                }
+                else{
+                    v=arr[i];
+                    e=1;
+                }
+            }
+        }
+        return v;
+        
+    }
+}
