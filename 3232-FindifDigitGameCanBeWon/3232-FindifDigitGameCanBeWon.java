@@ -1,4 +1,4 @@
-// Last updated: 01/08/2025, 00:34:08
+// Last updated: 01/08/2025, 00:34:27
 class Solution {
     public boolean canAliceWin(int[] nums) {
         int s_sum=0;
@@ -17,6 +17,6 @@ class Solution {
             if(nums[nums.length/2]<10) s_sum+=nums[nums.length/2];
             else d_sum+=nums[nums.length/2];
         }
-        return d_sum!=s_sum;
+        return d_sum>s_sum ||d_sum<s_sum;
     }
 }
