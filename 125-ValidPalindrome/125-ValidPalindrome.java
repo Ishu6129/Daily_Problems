@@ -1,8 +1,14 @@
-// Last updated: 07/08/2025, 18:23:18
+// Last updated: 07/08/2025, 18:25:43
 class Solution {
     public boolean isPalindrome(String s) {
         String str = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        String reversed = new StringBuilder(str).reverse().toString();
-        return str.equals(reversed);
+        int i=0;
+        int j=str.length()-1;
+        while(i<j){
+            if(str.charAt(i)!=str.charAt(j)) return false;
+            i++;
+            j--;
+        }
+        return true;
     }
 }
