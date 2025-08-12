@@ -1,4 +1,4 @@
-// Last updated: 12/08/2025, 20:12:18
+// Last updated: 12/08/2025, 20:21:53
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -12,17 +12,17 @@
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode initial = new ListNode(0, head);
-        ListNode first = initial;
-        ListNode second = initial;
-
-        for (int i = 0; i <= n; i++) {
-            first = first.next;
+        ListNode pointer = initial;
+        int length=0;
+        while(pointer.next!=null){
+            pointer=pointer.next;
+            length++;
         }
-        while (first != null) {
-            first = first.next;
-            second = second.next;
+        pointer=initial;
+        for(int i=0;i<length-n;i++){
+            pointer=pointer.next;
         }
-        second.next = second.next.next;
+        pointer.next=pointer.next.next;
         return initial.next;
     }
 }
