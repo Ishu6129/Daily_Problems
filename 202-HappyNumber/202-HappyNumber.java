@@ -1,4 +1,4 @@
-// Last updated: 16/08/2025, 19:39:38
+// Last updated: 17/08/2025, 14:07:51
 class Solution {
     public boolean isHappy(int n) {
         Set<Integer> set = new HashSet<>();
@@ -19,15 +19,5 @@ class Solution {
                 set.add(n);
             }
         }
-    }
-    public int sum(int n){
-        int t=n;
-        int sm=0;
-        while(t>0){
-            int r=t%10;
-            sm=sm+(r*r);
-            t=t/10;
-        }
-        return sm;
     }
 }
