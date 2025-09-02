@@ -1,16 +1,16 @@
-// Last updated: 02/09/2025, 19:07:35
+// Last updated: 02/09/2025, 19:13:00
 class Solution {
     public int areaOfMaxDiagonal(int[][] dimensions) {
-        double maxDig= Double.MIN_VALUE;
-        int maxArea=Integer.MAX_VALUE;
+        int maxDig= 0;
+        int maxArea=0;
         for(int i=0;i<dimensions.length;i++){
-            int area=dimensions[i][0]*dimensions[i][1];
-            double dig=Math.sqrt(dimensions[i][0]*dimensions[i][0]+dimensions[i][1]*dimensions[i][1]);
-            if(dig>maxDig){
+            int l = dimensions[i][0];
+            int w = dimensions[i][1];
+            int currDiag = l * l + w * w;
+            int area=l*w;
+            int dig=l*l+w*w;
+            if(dig>maxDig||(dig==maxDig && area>maxArea)){
                 maxDig=dig;
-                maxArea=area;
-            }
-            else if(dig==maxDig && area>maxArea){
                 maxArea=area;
             }
         }  
