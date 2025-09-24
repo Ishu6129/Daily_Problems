@@ -1,14 +1,20 @@
-// Last updated: 31/07/2025, 19:34:36
+// Last updated: 24/09/2025, 22:39:06
 class Solution {
-    public int maxProduct(int[] arr) {
-        int left=1;
-        int right=1;
-        int max_prod=Integer.MIN_VALUE;
-        for(int i=0;i<arr.length;i++){
-            left=(left==0?1 : left)*arr[i];
-            right=(right==0?1 : right)*arr[arr.length-1-i];
-            max_prod=Math.max(max_prod,Math.max(left,right));
+    public int maxProduct(int[] nums) {
+        int mx = Integer.MIN_VALUE;
+        int cmx = 1;
+        int cmn =1;
+        for (int i = 0; i < nums.length; i++) {
+            if (cmx == 0) {
+                cmx=1;
+            }
+            if (cmn ==0) {
+                cmn=1;
+            }
+            cmx = cmx * nums[i];
+            cmn =cmn * nums[nums.length-i-1];
+            mx = Math.max(mx, Math.max(cmn,cmx));
         }
-        return max_prod;
+        return mx;
     }
 }
