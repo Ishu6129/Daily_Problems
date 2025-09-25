@@ -1,4 +1,4 @@
-// Last updated: 25/09/2025, 17:25:51
+// Last updated: 25/09/2025, 17:28:46
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -15,17 +15,10 @@
  * }
  */
 class Solution {
-    int c=0;
     public int countNodes(TreeNode root) {
-        count(root);
-        return c;
-    }
-    public void count(TreeNode root){
         if(root==null){
-            return;
+            return 0;
         }
-        c++;
-        count(root.left);
-        count(root.right);
+        return 1+countNodes(root.left)+ countNodes(root.right);
     }
 }
