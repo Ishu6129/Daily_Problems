@@ -1,8 +1,23 @@
-// Last updated: 28/09/2025, 22:58:17
+// Last updated: 28/09/2025, 23:01:40
+import java.util.*;
+
 class Solution {
-    public int maximumProduct(int[] nums) {
-        Arrays.sort(nums);
-        int n=nums.length;
-        return Math.max(nums[n-1]*nums[n-2]*nums[n-3],nums[0]*nums[1]*nums[n-1]);
+    public String frequencySort(String s) {
+        Map<Character, Integer> map = new TreeMap<>();
+        for (char c : s.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+
+        List<Map.Entry<Character, Integer>> list = new ArrayList<>(map.entrySet());
+        Collections.sort(list, (a, b) -> b.getValue().compareTo(a.getValue()));
+
+        StringBuilder ans = new StringBuilder();
+        for (Map.Entry<Character, Integer> entry : list) {
+            for (int i = 0; i < entry.getValue(); i++) {
+                ans.append(entry.getKey());
+            }
+        }
+
+        return ans.toString();
     }
 }
