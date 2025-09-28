@@ -1,4 +1,4 @@
-// Last updated: 28/09/2025, 22:29:48
+// Last updated: 28/09/2025, 22:35:16
 import java.util.*;
 
 class Solution {
@@ -6,14 +6,20 @@ class Solution {
         Deque<Integer> dq = new ArrayDeque<>();
         int n = nums.length;
         int[] res = new int[n - k + 1];
-        int l = 0, r = 0;
+        int l = 0, r = 0, idx = 0;
 
         while (r < n) {
-            while (!dq.isEmpty() && nums[dq.peekLast()] < nums[r]) dq.removeLast();
+            while (!dq.isEmpty() && nums[dq.getLast()] < nums[r]) {
+                dq.removeLast();
+            }
             dq.addLast(r);
-            if (l > dq.peekFirst()) dq.removeFirst();
+
+            if (!dq.isEmpty() && l > dq.getFirst()) {
+                dq.removeFirst();
+            }
+
             if (r + 1 >= k) {
-                res[l] = nums[dq.peekFirst()];
+                res[idx++] = nums[dq.getFirst()];
                 l++;
             }
             r++;
