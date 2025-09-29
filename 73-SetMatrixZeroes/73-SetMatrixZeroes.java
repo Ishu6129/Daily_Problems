@@ -1,4 +1,4 @@
-// Last updated: 29/09/2025, 15:27:28
+// Last updated: 29/09/2025, 15:27:35
 class Solution {
     public void setZeroes(int[][] matrix) {
         find(matrix,0,0);
@@ -18,7 +18,6 @@ class Solution {
         find(arr,i,j+1);
     }
     public void set(int[][] arr,int i,int j){
-        System.out.println("set "+i+" "+j);
         for(int k=0;k<arr[i].length;k++){
             arr[i][k]=0;
         }
