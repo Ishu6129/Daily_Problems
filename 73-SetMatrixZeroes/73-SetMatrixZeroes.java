@@ -1,22 +1,30 @@
-// Last updated: 10/08/2025, 22:13:44
+// Last updated: 29/09/2025, 15:27:28
 class Solution {
     public void setZeroes(int[][] matrix) {
-        List<List<Integer>> list=new ArrayList<>();
-        for(int i=0;i<matrix.length;i++){
-            for(int j=0;j<matrix[0].length;j++){
-                if(matrix[i][j]==0) list.add(Arrays.asList(i, j));
-            }
-        }
-        for(int i=0;i<list.size();i++){
-            int row=list.get(i).get(0);
-            for(int j=0;j<matrix[0].length;j++){
-                matrix[row][j]=0;
-            }
-            int col=list.get(i).get(1);
-            for(int j=0;j<matrix.length;j++){
-                matrix[j][col]=0;
-            }
-        }
-
+        find(matrix,0,0);
     }
+    public void find(int[][] arr,int i,int j){
+        if(i==arr.length-1 && j==arr[i].length ) {
+            return;}
+        if(j>=arr[i].length && i+1<arr.length) {
+            i++;
+            j=0;
+        }
+        if(arr[i][j]==0){
+            find(arr,i,j+1);
+            set(arr,i,j);
+            return;
+        }
+        find(arr,i,j+1);
+    }
+    public void set(int[][] arr,int i,int j){
+        System.out.println("set "+i+" "+j);
+        for(int k=0;k<arr[i].length;k++){
+            arr[i][k]=0;
+        }
+        for(int k=0;k<arr.length;k++){
+            arr[k][j]=0;
+        }
+    }
+
 }
