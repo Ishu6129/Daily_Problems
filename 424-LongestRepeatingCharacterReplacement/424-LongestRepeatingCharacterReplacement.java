@@ -1,4 +1,4 @@
-// Last updated: 01/10/2025, 00:02:30
+// Last updated: 01/10/2025, 00:03:45
 class Solution {
     public int characterReplacement(String s, int k) {
         int[] freq=new int[26];
@@ -10,11 +10,11 @@ class Solution {
             freq[s.charAt(j)-'A']++;
             max=Math.max(max,freq[s.charAt(j)-'A']);
             int size=(j-i+1);
-            while(size-max>k){
+            if(size-max>k){
                 freq[s.charAt(i)-'A']--;
                 i++;
-                size = (j-i+1);
             }
+                size = (j-i+1);
             ans=Math.max(ans,size);
             j++;
         }
