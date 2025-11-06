@@ -1,21 +1,17 @@
-// Last updated: 04/11/2025, 20:09:26
+// Last updated: 06/11/2025, 20:05:21
 class Solution {
-    public int[][] divideArray(int[] nums, int k) {
-        Arrays.sort(nums);
-        int[][] ans=new int[nums.length/3][3];
-        int idx=0;
-        for(int i=2;i<nums.length;i++){
-            if(nums[i-2]-nums[i-1]<=k && nums[i-1]-nums[i]<=k && 
-            nums[i]-nums[i-2]<=k){
-                ans[idx][0]=nums[i-2];
-                ans[idx][1]=nums[i-1];
-                ans[idx][2]=nums[i];
-                idx++;
-                i++;
-                i++;
+    public String largestGoodInteger(String num) {
+        String s="";
+        for(int i=0;i<num.length()-2;i++){
+            char a=num.charAt(i);
+            char b=num.charAt(i+1);
+            char c=num.charAt(i+2);
+            if(a==b && b==c && c==a){
+                if(s.length()==0 || s.charAt(0)<a){
+                    s=(a+""+a+""+a);
+                }
             }
-            else return new int[0][];
         }
-        return ans;
+        return s;
     }
 }
