@@ -1,4 +1,4 @@
-// Last updated: 06/11/2025, 20:05:21
+// Last updated: 06/11/2025, 20:10:00
 class Solution {
     public String largestGoodInteger(String num) {
         String s="";
@@ -8,10 +8,10 @@ class Solution {
             char c=num.charAt(i+2);
             if(a==b && b==c && c==a){
                 if(s.length()==0 || s.charAt(0)<a){
-                    s=(a+""+a+""+a);
+                    s=a+"";
                 }
             }
         }
-        return s;
+        return (s.length()==0)?"":(s+""+s+""+s);
     }
 }
