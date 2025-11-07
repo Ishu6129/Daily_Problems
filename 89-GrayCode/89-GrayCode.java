@@ -1,4 +1,4 @@
-// Last updated: 07/11/2025, 22:21:16
+// Last updated: 07/11/2025, 22:25:47
 class Solution {
     public List<Integer> grayCode(int n) {
         if(n==1){
@@ -12,9 +12,10 @@ class Solution {
        for(int i:pre){
             ans.add(i);
        }
-       int add = 1 << (n - 1);
        for (int i = pre.size() - 1; i >= 0; i--) {
-            ans.add(pre.get(i) | add);
+            String bin = Integer.toBinaryString(pre.get(i));
+            bin = String.format("%" + (n-1) + "s", bin).replace(' ', '0');
+            ans.add(Integer.valueOf("1" + bin, 2));
         }
        return ans;
     }
