@@ -1,4 +1,4 @@
-// Last updated: 17/11/2025, 14:25:52
+// Last updated: 17/11/2025, 14:26:01
 class Solution {
     public boolean kLengthApart(int[] nums, int k) {
         int pointer=-1;
@@ -10,7 +10,6 @@ class Solution {
         for(int j=i+1;j<nums.length;j++){
             if(nums[j]==1){
                 if(j-pointer-1<k) {
-                    System.out.println(j+" "+i+" "+(j-pointer-1));
                     return false;
                 }
                 pointer=j;
