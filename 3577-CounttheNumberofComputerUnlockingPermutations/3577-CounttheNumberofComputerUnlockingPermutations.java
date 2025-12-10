@@ -1,21 +1,14 @@
-// Last updated: 10/12/2025, 17:13:08
+// Last updated: 10/12/2025, 21:16:55
 1class Solution {
-2    public boolean reorderedPowerOf2(int n) {
-3        int[] digitCount = countDigits(n);
-4        for (int i = 0; i <= 30; i++) {
-5            int powerOfTwo = 1 << i;
-6            if (Arrays.equals(digitCount, countDigits(powerOfTwo))) {
-7                return true;
-8            }
-9        }
-10        return false;
-11    }
-12    public int[] countDigits(int num) {
-13        int[] count = new int[10];
-14        while (num > 0) {
-15            count[num % 10]++;
-16            num /= 10;
-17        }
-18        return count;
-19    }
-20}
+2    public int countPermutations(int[] complexity) {
+3        long ans=1;
+4        int n=complexity.length;
+5        for(int i=1;i<n;i++){
+6            if(complexity[i]<=complexity[0]) return 0;
+7        }
+8        for(int i=1;i<n;i++){
+9            ans=(ans*i)%1000000007;
+10        }
+11        return (int)ans;
+12    }
+13}
