@@ -1,4 +1,4 @@
-// Last updated: 22/12/2025, 17:59:54
+// Last updated: 23/12/2025, 11:43:35
 1class Solution {
 2    public String arrangeWords(String text) {
 3        String[] arr=text.toLowerCase().strip().split(" ");
