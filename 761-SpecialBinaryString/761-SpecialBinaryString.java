@@ -1,4 +1,4 @@
-// Last updated: 21/12/2025, 19:23:38
+// Last updated: 23/12/2025, 11:45:26
 1class Solution {
 2    public String makeLargestSpecial(String s) {
 3        List<String> ans = new ArrayList<>();
@@ -17,7 +17,8 @@
 16            }
 17        }
 18        Collections.sort(ans,Collections.reverseOrder());
-19        return String.join("", ans);
-20    }
-21}
-22
+19        System.out.println(ans);
+20        return String.join("", ans);
+21    }
+22}
+23
