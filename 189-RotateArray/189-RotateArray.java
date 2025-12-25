@@ -1,26 +1,18 @@
-// Last updated: 31/07/2025, 19:34:28
-class Solution {
-    public void rotate(int[] nums, int k) {
-        Rotate(nums,k);
-    }
-    public static void Rotate(int[] arr, int k) {
-		int n=arr.length;
-		k=k%n;
-//		starting n-k reverse kro
-		Reverse(arr,0,n-k-1);
-//		last ke k Reverse kro
-		Reverse(arr,n-k,n-1);
-//		all element reverse kro
-		Reverse(arr,0,n-1);
-	}
-    public static void Reverse(int[] arr, int i,int j) {
-		while(i<j) {
-			int tem=arr[i];
-			arr[i]=arr[j];
-			arr[j]=tem;
-			i++;
-			j--;
-		}
-	}
-
-}
+// Last updated: 25/12/2025, 21:17:01
+1class Solution {
+2    public void rotate(int[] nums, int k) {
+3     k=k%nums.length;
+4     Reverse(nums,0,nums.length-1);
+5     Reverse(nums,0,k-1);
+6     Reverse(nums,k,nums.length-1);
+7    }
+8    public static void Reverse(int[] arr, int i,int j) {
+9		while(i<j) {
+10			int tem=arr[i];
+11			arr[i]=arr[j];
+12			arr[j]=tem;
+13			i++;
+14			j--;
+15		}
+16	}
+17}
