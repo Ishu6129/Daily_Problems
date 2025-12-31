@@ -1,4 +1,4 @@
-// Last updated: 31/12/2025, 12:21:41
+// Last updated: 31/12/2025, 12:26:33
 1class Solution {
 2    class TrieNode {
 3        TrieNode[] children;
@@ -47,8 +47,9 @@
 46            if(match.length()<ans.length()){
 47                ans=match;
 48            }
-49        }
-50        return ans;
-51
-52    }
-53}
+49            if(ans.length()==0) return ""; 
+50        }
+51        return ans;
+52
+53    }
+54}
