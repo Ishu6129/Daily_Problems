@@ -1,4 +1,4 @@
-// Last updated: 31/12/2025, 12:26:33
+// Last updated: 31/12/2025, 12:27:10
 1class Solution {
 2    class TrieNode {
 3        TrieNode[] children;
