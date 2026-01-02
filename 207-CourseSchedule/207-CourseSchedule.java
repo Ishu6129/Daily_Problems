@@ -1,4 +1,4 @@
-// Last updated: 02/01/2026, 11:06:50
+// Last updated: 02/01/2026, 11:07:27
 1class Solution {
 2    public boolean canFinish(int numCourses, int[][] prerequisites) {
 3        HashMap<Integer,ArrayList<Integer>> map=new HashMap<>();
