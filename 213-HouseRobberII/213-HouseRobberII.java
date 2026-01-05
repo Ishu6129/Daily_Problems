@@ -1,22 +1,20 @@
-// Last updated: 03/09/2025, 22:44:51
-class Solution {
-    public int rob(int[] nums) {
-        int n = nums.length;
-        if (n == 1) return nums[0];
-        int[] dp1 = new int[n];
-        int[] dp2 = new int[n];
-        Arrays.fill(dp1, -1);
-        Arrays.fill(dp2, -1);
-        int ans1 = Robber(nums, 0, n - 2, dp1);
-        int ans2 = Robber(nums, 1, n - 1, dp2);
-        return Math.max(ans1, ans2);
-    }
-
-    public static int Robber(int[] arr, int i, int j, int[] dp) {
-        if (i > j) return 0;
-        if (dp[i] != -1) return dp[i];
-        int rob = arr[i] + Robber(arr, i + 2, j, dp);
-        int nrob = Robber(arr, i + 1, j, dp);
-        return dp[i] = Math.max(rob, nrob);
-    }
-}
+// Last updated: 05/01/2026, 12:40:51
+1class Solution {
+2    public int rob(int[] nums) {
+3        int n=nums.length;
+4        if (n == 0) return 0;
+5        if (n == 1) return nums[0];
+6        int[] dp1=new int[n];
+7        int[] dp2=new int[n];
+8        Arrays.fill(dp1, Integer.MIN_VALUE);
+9        Arrays.fill(dp2, Integer.MIN_VALUE);
+10        return Math.max(find(nums,0,n-1,dp1),find(nums,1,n,dp2));
+11    }
+12    public int find(int[] arr,int idx,int n,int[] dp){
+13        if(idx>=n) return 0;
+14        if (dp[idx] != Integer.MIN_VALUE) return dp[idx];
+15        int pk=arr[idx]+find(arr,idx+2,n,dp);
+16        int npk=find(arr,idx+1,n,dp);
+17        return dp[idx]=Math.max(pk,npk);
+18    }
+19}
