@@ -1,4 +1,4 @@
-// Last updated: 05/01/2026, 20:32:59
+// Last updated: 06/01/2026, 17:10:09
 1class Solution{
 2    public int minimumNumbers(int num,int k){
 3        if(num==0) return 0;
