@@ -1,4 +1,4 @@
-// Last updated: 06/01/2026, 23:27:52
+// Last updated: 06/01/2026, 23:28:04
 1class Solution {
 2    public int lengthOfLIS(int[] nums) {
 3        int n=nums.length;
@@ -11,14 +11,13 @@
 10        return ans;
 11    }
 12    public int find(int[] nums,int idx,int[] dp){
-13        if(idx>=nums.length) return Integer.MIN_VALUE;
-14        if(dp[idx]!=Integer.MIN_VALUE) return dp[idx];
-15        int max=1;
-16        for(int i=0;i<idx;i++){
-17            if(nums[i]<nums[idx]){
-18                max=Math.max(max,1+find(nums,i,dp));
-19            }
-20        }
-21        return dp[idx]=max;
-22    }
-23}
+13        if(dp[idx]!=Integer.MIN_VALUE) return dp[idx];
+14        int max=1;
+15        for(int i=0;i<idx;i++){
+16            if(nums[i]<nums[idx]){
+17                max=Math.max(max,1+find(nums,i,dp));
+18            }
+19        }
+20        return dp[idx]=max;
+21    }
+22}
