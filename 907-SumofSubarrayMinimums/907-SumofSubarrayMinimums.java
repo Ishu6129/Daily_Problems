@@ -1,4 +1,4 @@
-// Last updated: 19/01/2026, 12:21:14
+// Last updated: 19/01/2026, 12:21:52
 1class Solution {
 2    public int sumSubarrayMins(int[] arr) {
 3        long ans=0;
@@ -22,9 +22,9 @@
 21            st.push(i);
 22        }
 23        for(int i=0;i<n;i++){
-24         int s=i-left[i];
-25         int e=right[i]-i;
-26         ans=(ans+(long)arr[i]*s*e)%((int)(1e9+7));   
+24         long s=i-left[i];
+25         long e=right[i]-i;
+26         ans=(ans+arr[i]*s*e)%((int)(1e9+7));   
 27        }
 28        return (int)ans;
 29    }
