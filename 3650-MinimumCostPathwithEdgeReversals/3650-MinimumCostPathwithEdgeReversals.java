@@ -1,4 +1,4 @@
-// Last updated: 30/12/2025, 22:24:07
+// Last updated: 27/01/2026, 15:23:10
 1class Solution {
 2    class Pair{
 3        int vtx;
