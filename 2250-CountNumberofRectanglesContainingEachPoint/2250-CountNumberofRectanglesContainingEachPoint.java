@@ -1,4 +1,4 @@
-// Last updated: 25/12/2025, 22:55:01
+// Last updated: 28/01/2026, 21:04:28
 1class Solution {
 2    public int[] countRectangles(int[][] rectangles, int[][] points) {
 3        ArrayList<Integer>[] con=new ArrayList[101];
