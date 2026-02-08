@@ -1,4 +1,4 @@
-// Last updated: 08/02/2026, 20:54:42
+// Last updated: 08/02/2026, 20:55:01
 1/**
 2 * Definition for a binary tree node.
 3 * public class TreeNode {
@@ -21,8 +21,8 @@
 20        return flag;
 21    }
 22    public int check(TreeNode root){
-23        if(flag==false)return -1;
-24        if(root==null) return -1;
+23        if(flag==false)return 0;
+24        if(root==null) return 0;
 25
 26        int lht=check(root.left);
 27        int rht=check(root.right);
