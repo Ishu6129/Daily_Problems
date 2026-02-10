@@ -1,4 +1,4 @@
-// Last updated: 10/02/2026, 12:20:01
+// Last updated: 10/02/2026, 12:20:13
 1/**
 2 * Definition for a binary tree node.
 3 * public class TreeNode {
@@ -72,26 +72,24 @@
 71                for(int i=1;i<list1.size();i++){
 72                    if(list1.get(i-1)<=list1.get(i) || list1.get(i)%2!=0){
 73                        ans=false;
-74                        System.out.println(false);
-75                        return;
-76                    }
-77                }
-78                list1.clear();
-79            }
-80            else if(r.level%2==0 && list2.size()!=0){
-81                if(list2.get(0)%2==0){
-82                    ans=false;
-83                    return;
-84                }
-85                for(int i=1;i<list2.size();i++){
-86                    if(list2.get(i-1)>=list2.get(i) || list2.get(i)%2==0 ){
-87                        ans=false;
-88                        System.out.println(false);
-89                        return;
-90                    }
-91                }
-92                list2.clear();
-93            }
-94        }
-95    }
-96}
+74                        return;
+75                    }
+76                }
+77                list1.clear();
+78            }
+79            else if(r.level%2==0 && list2.size()!=0){
+80                if(list2.get(0)%2==0){
+81                    ans=false;
+82                    return;
+83                }
+84                for(int i=1;i<list2.size();i++){
+85                    if(list2.get(i-1)>=list2.get(i) || list2.get(i)%2==0 ){
+86                        ans=false;
+87                        return;
+88                    }
+89                }
+90                list2.clear();
+91            }
+92        }
+93    }
+94}
