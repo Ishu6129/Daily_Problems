@@ -1,4 +1,4 @@
-// Last updated: 11/02/2026, 12:32:50
+// Last updated: 11/02/2026, 12:34:39
 1class Solution {
 2    class Node{
 3        Node zero;
@@ -34,41 +34,39 @@
 33    }
 34    public int find(int val){
 35        Node curr=root;
-36        StringBuilder sb=new StringBuilder();
+36        int ans=0;
 37        for(int i=31;i>=0;i--){
 38            int bit=val&(1<<i);
 39            if(bit==0){
 40                if(curr.one!=null){
-41                    sb.append('1');
+41                    ans=ans|(1<<i);
 42                    curr=curr.one;
 43                }
 44                else{
-45                    sb.append('0');
-46                    curr=curr.zero;
-47                }
-48            }
-49            else{
-50                if(curr.zero!=null){
-51                    sb.append('1');
-52                    curr=curr.zero;
-53                }
-54                else{
-55                    sb.append('0');
-56                    curr=curr.one;
-57                }
-58            }
-59        }
-60        return Integer.parseInt(sb.toString(),2);
-61    }
-62
-63    public int findMaximumXOR(int[] nums) {
-64        for(int i:nums){
-65            add(i);
-66        }
-67        int ans=0;
-68        for(int i:nums){
-69            ans=Math.max(ans,find(i));
-70        }
-71        return ans;
-72    }
-73}
+45                    curr=curr.zero;
+46                }
+47            }
+48            else{
+49                if(curr.zero!=null){
+50                    ans=ans|(1<<i);
+51                    curr=curr.zero;
+52                }
+53                else{
+54                    curr=curr.one;
+55                }
+56            }
+57        }
+58        return ans;
+59    }
+60
+61    public int findMaximumXOR(int[] nums) {
+62        for(int i:nums){
+63            add(i);
+64        }
+65        int ans=0;
+66        for(int i:nums){
+67            ans=Math.max(ans,find(i));
+68        }
+69        return ans;
+70    }
+71}
