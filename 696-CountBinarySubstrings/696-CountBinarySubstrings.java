@@ -1,17 +1,49 @@
-// Last updated: 19/02/2026, 21:26:03
-1class Solution {
-2    public int countBinarySubstrings(String s) {
-3        int pre=1;
-4        int ans=0;
-5        int curr=0;
-6        for(int i=1;i<s.length();i++){
-7            if(s.charAt(i)==s.charAt(i-1)) pre++;
-8            else{
-9                ans+=Math.min(pre,curr);
-10                curr=pre;
-11                pre=1;
-12            }
-13        }
-14        return ans+Math.min(curr,pre);
-15    }
-16}
+// Last updated: 19/02/2026, 21:28:27
+// class Solution {
+//     public int countBinarySubstrings(String s) {
+//         int prev = 0;
+//         int curr = 1;
+//         int res = 0;
+//         for(int i = 1; i < s.length(); i++) {
+//             if(s.charAt(i) == s.charAt(i - 1)) {
+//                 curr++;
+//             } else {
+//                 res += Math.min(prev, curr);
+//                 prev = curr;
+//                 curr = 1;
+//             }
+//         }
+//         res += Math.min(prev, curr);
+//         return res;
+//     }
+// }
+
+class Solution {
+
+    static {
+        for (int i = 0; i < 500; i++) {
+            countBinarySubstrings("1100");
+        }
+    }
+
+    public static int countBinarySubstrings(String s) {
+        var sChar = s.toCharArray(); 
+        var count = 0; 
+        var sequence = 1; 
+        var lastSequence = 0; 
+
+        for (int left = 1; left < sChar.length; left++) {
+            if (sChar[left] == sChar[left - 1]) {
+                sequence += 1; 
+            } else {
+                count += Math.min(lastSequence, sequence);
+                lastSequence = sequence; 
+                sequence = 1; 
+            }
+        }
+
+        count += Math.min(lastSequence, sequence);
+
+        return count; 
+    }
+}
