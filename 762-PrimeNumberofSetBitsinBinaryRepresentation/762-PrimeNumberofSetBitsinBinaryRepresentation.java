@@ -1,4 +1,4 @@
-// Last updated: 21/02/2026, 11:13:07
+// Last updated: 21/02/2026, 11:35:28
 1class Solution {
 2    static Set<Integer> set=Set.of(2,3,5,7,11,13,17,19);
 3    public int countPrimeSetBits(int left, int right) {
