@@ -1,4 +1,4 @@
-// Last updated: 22/02/2026, 15:53:52
+// Last updated: 22/02/2026, 15:53:59
 1class Solution {
 2    public int binaryGap(int n) {
 3        while(n>0){
