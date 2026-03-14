@@ -1,4 +1,4 @@
-// Last updated: 14/03/2026, 23:46:02
+// Last updated: 14/03/2026, 23:46:11
 class Solution {
 
     private static char[] ALLOWED_LETTERS = { 'a', 'b', 'c' };
