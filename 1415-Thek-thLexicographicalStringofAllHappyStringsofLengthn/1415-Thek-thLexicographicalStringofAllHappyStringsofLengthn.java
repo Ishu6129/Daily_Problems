@@ -1,22 +1,41 @@
-// Last updated: 14/03/2026, 23:42:12
-1class Solution {
-2    List<String> ans;
-3    Set<Character> set=Set.of('a','b','c');
-4    public String getHappyString(int n, int k) {
-5        ans=new ArrayList<>();
-6        generate(n,"");
-7        if(k>ans.size()) return "";
-8        Collections.sort(ans);
-9        return ans.get(k-1);
-10    }
-11    public void generate(int n,String s){
-12        if(n==0){
-13            ans.add(s);
-14            return;
-15        }
-16        for(char i:set){
-17            if(s.length()!=0 && s.charAt(s.length()-1)==i)continue;
-18            generate(n-1,s+i);
-19        }
-20    }
-21}
+// Last updated: 14/03/2026, 23:46:02
+class Solution {
+
+    private static char[] ALLOWED_LETTERS = { 'a', 'b', 'c' };
+
+    private int happyStringCount;
+    private String kthHappyString;
+
+    public String getHappyString(int n, int k) {
+        this.happyStringCount = 0;
+        this.kthHappyString = "";
+        kthHappyStringHelper(new StringBuilder(), n, k);
+        return happyStringCount >= k ? kthHappyString : "";
+    }
+
+    private void kthHappyStringHelper(StringBuilder currStr, int n, int k) {
+
+        int currStrSize = currStr.length();
+
+        if (currStrSize == n) {
+            happyStringCount++;
+            if (happyStringCount == k) {
+                kthHappyString = currStr.toString();
+            }
+            return;
+        }
+
+        for (char c : ALLOWED_LETTERS) {
+
+            if (currStrSize > 0 && c == currStr.charAt(currStrSize - 1))
+                continue;
+
+            currStr.append(c);
+            kthHappyStringHelper(currStr, n, k);
+            currStr.deleteCharAt(currStrSize);
+
+            if (happyStringCount == k)
+                return;
+        }
+    }
+}
