@@ -1,13 +1,17 @@
-// Last updated: 20/03/2026, 01:20:55
-1class Solution {
-2    public int findGCD(int[] nums) {
-3        Arrays.sort(nums);
-4        int a=nums[0];
-5        int b=nums[nums.length-1];
-6        while(a>0 && b>0){
-7            if(a>b) a=a%b;
-8            else b=b%a;
-9        }
-10        return a==0?b:a;
-11    }
-12}
+// Last updated: 20/03/2026, 01:22:12
+class Solution {
+    public int findGCD(int[] nums) {
+        int min=10001,max=0;
+        int ans=1;
+        for(int i:nums){
+            if(min>i) min=i;
+            if(max<i) max=i;
+        }
+        for(int i=2;i<=max;i++){
+            if(max%i==0 && min%i==0){
+                ans=i;
+            }
+        }
+        return ans;
+    }
+}
