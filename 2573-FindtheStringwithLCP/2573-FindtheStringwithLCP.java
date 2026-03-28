@@ -1,4 +1,4 @@
-// Last updated: 29/03/2026, 00:28:55
+// Last updated: 29/03/2026, 00:38:17
 1class Solution {
 2    public String findTheString(int[][] lcp) {
 3        int n=lcp.length;
@@ -26,15 +26,16 @@
 25        }
 26        int[][] check=new int[n][n];
 27        for (int i =n-1;i>=0;i--) {
-28            for (int j=n-1;j>=0;j--){
+28            for (int j=n-1;j>=i;j--){
 29                if (sb.charAt(i)==sb.charAt(j)) {
 30                    check[i][j]=1+( ((i+1)<n && (j+1)<n)?check[i+1][j+1]:0);
-31                }
-32            }
-33        }
-34        for(int i=0;i<n;i++){
-35            if(!Arrays.equals(check[i],lcp[i])) return "";
-36        }
-37        return sb.toString();
-38    }
-39}
+31                    check[j][i]=check[i][j];
+32                }
+33            }
+34        }
+35        for(int i=0;i<n;i++){
+36            if(!Arrays.equals(check[i],lcp[i])) return "";
+37        }
+38        return sb.toString();
+39    }
+40}
