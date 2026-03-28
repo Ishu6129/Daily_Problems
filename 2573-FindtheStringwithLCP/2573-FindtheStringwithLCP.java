@@ -1,4 +1,4 @@
-// Last updated: 29/03/2026, 00:38:17
+// Last updated: 29/03/2026, 00:42:58
 1class Solution {
 2    public String findTheString(int[][] lcp) {
 3        int n=lcp.length;
@@ -16,7 +16,7 @@
 15        int c=0;
 16        for(int i=0;i<n;i++){
 17            if (sb.charAt(i)!='#') continue;
-18            if (c >= 26) return "";
+18            if (c == 26) return "";
 19            for(int j=i;j<n;j++){
 20                if (lcp[i][j] > 0) {
 21                    sb.setCharAt(j,(char)(97 + c));
