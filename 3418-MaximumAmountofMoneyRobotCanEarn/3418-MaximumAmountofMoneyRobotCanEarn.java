@@ -1,4 +1,4 @@
-// Last updated: 02/04/2026, 11:55:25
+// Last updated: 02/04/2026, 11:55:32
 1class Solution {
 2    int m,n;
 3    int[][][] dp;
@@ -16,7 +16,7 @@
 15    int[] row={0,1};
 16    int[] col={1,0};
 17    public int find(int i,int j,int shield,int[][] arr){
-18        if(i>=m || j>=n || shield<0){
+18        if(i>=m || j>=n){
 19            return Integer.MIN_VALUE/2;
 20        }
 21        if(i==m-1 && j==n-1){
