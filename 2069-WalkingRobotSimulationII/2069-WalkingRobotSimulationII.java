@@ -1,80 +1,78 @@
-// Last updated: 07/04/2026, 11:45:55
+// Last updated: 07/04/2026, 11:50:02
 1class Robot {
-2    int[][] grid;
-3    int m;
-4    int n;
-5    int x;
-6    int y;
-7    // 0-East, 1-North, 2-West, 3-South
-8    int dir;
-9    public Robot(int width, int height) {
-10        m=height;
-11        n=width;
-12        grid=new int[m][n];
-13        x=0;
-14        y=0;
-15    }
-16    
-17    public void step(int num) {
-18        int perimeter=2*(n+m)-4;
-19        num=num%perimeter;
-20        if (num==0)num=perimeter;
-21        for(int i=0;i<num;i++){
-22            if(dir==0){
-23                if((x+1)<n){
-24                    x++;
-25                }
-26                else{
-27                    dir=1;
-28                    y++;
-29                }
-30            }
-31            else if(dir==1){
-32                if((y+1)<m){
-33                    y++;
-34                }
-35                else{
-36                    dir=2;
-37                    x--;
-38                }
-39            }
-40            else if(dir==2){
-41                if((x-1)>=0){
-42                    x--;
-43                }
-44                else{
-45                    dir=3;
-46                    y--;
-47                }
-48            }
-49            else{
-50                if((y-1)>=0){
-51                    y--;
-52                }
-53                else{
-54                    dir=0;
-55                    x++;
-56                }
-57            }
-58        }
-59    }
-60    
-61    public int[] getPos() {
-62        return new int[]{x,y};
-63    }
-64    
-65    public String getDir() {
-66        if(dir==0) return "East";
-67        else if(dir==1) return "North";
-68        else if (dir==2) return "West";
-69        else return "South";
-70    }
-71}
-72
-73/**
-74 * Your Robot object will be instantiated and called as such:
-75 * Robot obj = new Robot(width, height);
-76 * obj.step(num);
-77 * int[] param_2 = obj.getPos();
-78 * String param_3 = obj.getDir();
-79 */
+2    int m;
+3    int n;
+4    int x;
+5    int y;
+6    // 0-East, 1-North, 2-West, 3-South
+7    int dir;
+8    public Robot(int width, int height) {
+9        m=height;
+10        n=width;
+11        x=0;
+12        y=0;
+13    }
+14    
+15    public void step(int num) {
+16        int perimeter=2*(n+m)-4;
+17        num=num%perimeter;
+18        if (num==0)num=perimeter;
+19        for(int i=0;i<num;i++){
+20            if(dir==0){
+21                if((x+1)<n){
+22                    x++;
+23                }
+24                else{
+25                    dir=1;
+26                    y++;
+27                }
+28            }
+29            else if(dir==1){
+30                if((y+1)<m){
+31                    y++;
+32                }
+33                else{
+34                    dir=2;
+35                    x--;
+36                }
+37            }
+38            else if(dir==2){
+39                if((x-1)>=0){
+40                    x--;
+41                }
+42                else{
+43                    dir=3;
+44                    y--;
+45                }
+46            }
+47            else{
+48                if((y-1)>=0){
+49                    y--;
+50                }
+51                else{
+52                    dir=0;
+53                    x++;
+54                }
+55            }
+56        }
+57    }
+58    
+59    public int[] getPos() {
+60        return new int[]{x,y};
+61    }
+62    
+63    public String getDir() {
+64        if(dir==0) return "East";
+65        else if(dir==1) return "North";
+66        else if (dir==2) return "West";
+67        else return "South";
+68    }
+69}
+70
+71/**
+72 * Your Robot object will be instantiated and called as such:
+73 * Robot obj = new Robot(width, height);
+74 * obj.step(num);
+75 * int[] param_2 = obj.getPos();
+76 * String param_3 = obj.getDir();
+77 */
