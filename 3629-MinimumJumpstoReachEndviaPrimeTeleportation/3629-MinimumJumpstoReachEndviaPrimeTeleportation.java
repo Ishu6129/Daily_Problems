@@ -1,4 +1,4 @@
-// Last updated: 5/8/2026, 1:00:18 PM
+// Last updated: 5/8/2026, 1:03:24 PM
 1class Solution {
 2    public boolean[] sieve(){
 3        int n=1000000;
@@ -54,6 +54,6 @@
 53                }
 54            }
 55        }
-56        return dist[n-1];
+56        return -1;
 57    }
 58}
