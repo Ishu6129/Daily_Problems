@@ -1,4 +1,4 @@
-// Last updated: 5/21/2026, 1:42:13 PM
+// Last updated: 5/21/2026, 1:43:21 PM
 1class Node{
 2    Node[] child;
 3    boolean end;
