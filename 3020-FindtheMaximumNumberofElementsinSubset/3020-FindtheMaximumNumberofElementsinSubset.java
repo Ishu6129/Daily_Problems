@@ -1,4 +1,4 @@
-// Last updated: 6/27/2026, 4:28:17 PM
+// Last updated: 6/27/2026, 4:29:10 PM
 1class Solution {
 2    public int maximumLength(int[] nums) {
 3        Map<Integer,Integer> map=new HashMap<>();
@@ -19,19 +19,16 @@
 18            if(!set.contains(nums[i])){
 19                int c=1;
 20                int x=nums[i];
-21                boolean flag=false;
-22                while(map.getOrDefault(x,0)>=2){
-23                    set.add(x);
-24                    x=x*x;
-25                    c+=2;
-26                    flag=true;
-27                }
-28                if(flag){
-29                    if(map.containsKey(x)) ans=Math.max(ans,c);
-30                    else ans=Math.max(ans,c-2);
-31                }
-32            }
-33        }
-34        return ans;
-35    }
-36}
+21                while(map.getOrDefault(x,0)>=2){    
+22                    set.add(x);
+23                    x=x*x;
+24                    c+=2;
+25                }
+26                if(map.containsKey(x)) ans=Math.max(ans,c);
+27                else ans=Math.max(ans,c-2);
+28                
+29            }
+30        }
+31        return ans;
+32    }
+33}
