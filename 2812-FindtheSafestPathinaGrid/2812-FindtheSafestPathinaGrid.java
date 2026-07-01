@@ -1,4 +1,4 @@
-// Last updated: 7/1/2026, 4:02:42 PM
+// Last updated: 7/1/2026, 4:21:48 PM
 1class Solution {
 2    int[][] dir = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 3    public int maximumSafenessFactor(List<List<Integer>> mat) {
@@ -18,8 +18,8 @@
 17            for (int i = 0; i < 4; i++) {
 18                int r = x + dir[i][0];
 19                int c = y + dir[i][1];
-20                if (r < 0 || r >= n || c < 0 || c >= n || grid[r][c] > 0) continue;
-21                grid[r][c] = grid[x][y] + 1;
+20                if (r < 0 || r >= n || c < 0 || c >= n || grid[r][c]!=0) continue;
+21                grid[r][c] = grid[x][y]+1;
 22                q.add(new int[]{r, c});
 23            }
 24        }
@@ -32,8 +32,8 @@
 31            if (x == n - 1 && y == n - 1) return sfac - 1;
 32            for (int i = 0; i < 4; i++) {
 33                int r = x+dir[i][0];
-34                int c = y+dir[i][1];
-35                if (r < 0 || r >= n || c < 0 || c >= n || grid[r][c] < 0) continue;
+34                int c = y+dir[i][1]; 
+35                if (r < 0 || r >= n || c < 0 || c >= n || grid[r][c]==-1) continue;
 36                int min = Math.min(sfac, grid[r][c]);
 37                pq.add(new int[]{min, r, c});
 38                grid[r][c] = -1;
