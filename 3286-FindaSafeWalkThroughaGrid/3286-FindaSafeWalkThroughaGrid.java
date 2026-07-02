@@ -1,38 +1,28 @@
-// Last updated: 31/12/2025, 23:35:51
-1import java.util.*;
-2
-3class Solution {
-4    public boolean findSafeWalk(List<List<Integer>> grid, int health) {
-5        int m = grid.size();
-6        int n = grid.get(0).size();
-7        int[][] dist = new int[m][n];
-8        for (int[] row : dist) Arrays.fill(row, Integer.MAX_VALUE);
-9        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[2] - b[2]);
-10        int startCost = grid.get(0).get(0);
-11        dist[0][0] = startCost;
-12        pq.offer(new int[]{0, 0, startCost});
-13        int[] dx = {1, -1, 0, 0};
-14        int[] dy = {0, 0, 1, -1};
-15        while (!pq.isEmpty()) {
-16            int[] cur = pq.poll();
-17            int x = cur[0], y = cur[1], cost = cur[2];
-18            if (cost > dist[x][y]) continue;
-19            if (x == m-1 && y== n-1) {
-20                return cost < health;
-21            }
-22            for (int d = 0; d < 4; d++) {
-23                int nx = x+dx[d];
-24                int ny = y+dy[d];
-25                if (nx < 0 || ny < 0 || nx >= m || ny >= n) continue;
-26                int newCost = cost + grid.get(nx).get(ny);
-27                if (newCost < dist[nx][ny]) {
-28                    dist[nx][ny] = newCost;
-29                    pq.offer(new int[]{nx, ny, newCost});
-30                }
-31            }
-32        }
-33
-34        return false;
-35    }
-36}
-37
+// Last updated: 7/2/2026, 5:32:31 PM
+1class Solution {
+2    List<List<Integer>> grid;
+3    int m;
+4    int n;
+5    Boolean dp[][][];
+6    public boolean findSafeWalk(List<List<Integer>> grid, int health) {
+7        this.grid=grid;
+8        this.m=grid.size();
+9        this.n=grid.get(0).size();
+10        this.dp=new Boolean[m][n][health+1];
+11        return dfs(0,0,health);
+12    }
+13    public boolean dfs(int i,int j,int health){
+14        if(i<0 || j<0 || i>=m || j>=n || health<=0) return false;
+15        int isUnSafe = (grid.get(i).get(j) == 1)?1:0;
+16        int rHealth = health - isUnSafe;
+17        if(i==m-1 && j==n-1){
+18            return rHealth >= 1;
+19        }
+20        if(dp[i][j][health]!=null) return dp[i][j][health];
+21        if(grid.get(i).get(j)==1) isUnSafe=1;
+22        dp[i][j][health] = false;
+23        boolean check=dfs(i,j-1,rHealth) || dfs(i-1,j,rHealth) ||
+24                      dfs(i+1,j,rHealth) || dfs(i,j+1,rHealth);
+25        return dp[i][j][health]= check;
+26    }
+27}
