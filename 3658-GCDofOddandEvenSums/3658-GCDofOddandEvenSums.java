@@ -1,4 +1,4 @@
-// Last updated: 25/12/2025, 21:21:05
+// Last updated: 7/15/2026, 12:08:49 PM
 1class Solution {
 2    public int gcdOfOddEvenSums(int n) {
 3        int sumOdd=n*n;
