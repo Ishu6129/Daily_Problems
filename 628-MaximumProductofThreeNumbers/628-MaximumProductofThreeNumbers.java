@@ -1,23 +1,8 @@
-// Last updated: 28/09/2025, 23:01:40
-import java.util.*;
-
-class Solution {
-    public String frequencySort(String s) {
-        Map<Character, Integer> map = new TreeMap<>();
-        for (char c : s.toCharArray()) {
-            map.put(c, map.getOrDefault(c, 0) + 1);
-        }
-
-        List<Map.Entry<Character, Integer>> list = new ArrayList<>(map.entrySet());
-        Collections.sort(list, (a, b) -> b.getValue().compareTo(a.getValue()));
-
-        StringBuilder ans = new StringBuilder();
-        for (Map.Entry<Character, Integer> entry : list) {
-            for (int i = 0; i < entry.getValue(); i++) {
-                ans.append(entry.getKey());
-            }
-        }
-
-        return ans.toString();
-    }
-}
+// Last updated: 7/26/2026, 10:55:16 AM
+1class Solution {
+2    public int maximumProduct(int[] nums) {
+3        Arrays.sort(nums);
+4        int n=nums.length;
+5        return Math.max(nums[0]*nums[1]*nums[2],Math.max(nums[n-1]*nums[n-2]*nums[n-3],nums[0]*nums[1]*nums[n-1]));
+6    }
+7}
