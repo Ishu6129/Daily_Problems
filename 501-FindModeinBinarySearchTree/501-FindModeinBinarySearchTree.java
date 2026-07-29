@@ -1,4 +1,4 @@
-// Last updated: 7/29/2026, 9:02:52 PM
+// Last updated: 7/29/2026, 9:03:02 PM
 1/**
 2 * Definition for a binary tree node.
 3 * public class TreeNode {
@@ -18,25 +18,24 @@
 17    HashMap<Integer,Integer> map=new HashMap<>();
 18    public int[] findMode(TreeNode root) {
 19        find(root);
-20        System.out.println(map);
-21        int mode=1;
-22        for(int key:map.keySet()){
-23            mode=Math.max(mode,map.get(key));
-24        }
-25        List<Integer> ls=new ArrayList<>();
-26        for(int key:map.keySet()){
-27            if(map.get(key)==mode) ls.add(key);
-28        }
-29        int ans[]=new int[ls.size()];
-30        for(int i=0;i<ls.size();i++) ans[i]=ls.get(i);
-31        return ans;
-32    }
-33    public void find(TreeNode root){
-34        if(root==null) return;
-35        int val=root.val;
-36        map.putIfAbsent(val,0);
-37        map.put(val,map.get(val)+1);
-38        find(root.left);
-39        find(root.right);
-40    }
-41}
+20        int mode=1;
+21        for(int key:map.keySet()){
+22            mode=Math.max(mode,map.get(key));
+23        }
+24        List<Integer> ls=new ArrayList<>();
+25        for(int key:map.keySet()){
+26            if(map.get(key)==mode) ls.add(key);
+27        }
+28        int ans[]=new int[ls.size()];
+29        for(int i=0;i<ls.size();i++) ans[i]=ls.get(i);
+30        return ans;
+31    }
+32    public void find(TreeNode root){
+33        if(root==null) return;
+34        int val=root.val;
+35        map.putIfAbsent(val,0);
+36        map.put(val,map.get(val)+1);
+37        find(root.left);
+38        find(root.right);
+39    }
+40}
