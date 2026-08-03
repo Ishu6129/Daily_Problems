@@ -1,4 +1,4 @@
-// Last updated: 8/3/2026, 3:23:29 PM
+// Last updated: 8/3/2026, 3:25:56 PM
 1class Solution {
 2    int[][][] dp;
 3    int n;
@@ -14,7 +14,7 @@
 13        return "Alice";
 14    }
 15    public int find(int start,int pick,boolean turn,int[] nums){
-16        if(start>=n || pick>2) return 0;
+16        if(start>=n) return 0;
 17        int t=turn?1:0;
 18        if(dp[start][pick][t]!=Integer.MIN_VALUE) return dp[start][pick][t];
 19        int a;
