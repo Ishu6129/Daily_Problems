@@ -1,4 +1,4 @@
-// Last updated: 8/5/2026, 5:29:32 PM
+// Last updated: 8/5/2026, 5:32:43 PM
 1class Solution {
 2    public List<Integer> remainingMethods(int n, int k, int[][] invocations) {
 3        Map<Integer,List<Integer>> map=new HashMap<>();
@@ -34,24 +34,23 @@
 33                    if(nset.contains(r)) continue;
 34                    nset.add(r);
 35                    vis[r]=true;
-36                    for(int nbr:map.get(r)){
-37                        if(!nset.contains(nbr)) st.push(nbr);
-38                    }
-39                }
-40            }
-41        }
-42        List<Integer> ans=new ArrayList<>();
-43        Set<Integer> cmn = new HashSet<>(set);
-44        cmn.retainAll(nset);
-45        if(!cmn.isEmpty()){
-46            for(int i=0;i<n;i++){
-47                ans.add(i);
-48            }
-49            return ans;
-50        }
-51        for(int i=0;i<n;i++){
-52            if(vis[i]) ans.add(i);
-53        }
-54        return ans;
-55    }
-56}
+36                    if(set.contains(r)){
+37                        List<Integer> ans=new ArrayList<>();
+38                        for(int v=0;v<n;v++){
+39                            ans.add(v);
+40                        }
+41                        return ans;
+42                    }
+43                    for(int nbr:map.get(r)){
+44                        if(!nset.contains(nbr)) st.push(nbr);
+45                    }
+46                }
+47            }
+48        }
+49        List<Integer> ans=new ArrayList<>();
+50        for(int i=0;i<n;i++){
+51            if(vis[i]) ans.add(i);
+52        }
+53        return ans;
+54    }
+55}
