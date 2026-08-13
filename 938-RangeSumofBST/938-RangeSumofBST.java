@@ -1,4 +1,4 @@
-// Last updated: 8/13/2026, 11:57:27 AM
+// Last updated: 8/13/2026, 12:02:11 PM
 1/**
 2 * Definition for a binary tree node.
 3 * public class TreeNode {
@@ -15,16 +15,10 @@
 14 * }
 15 */
 16class Solution {
-17    int ans=0;
-18    public int rangeSumBST(TreeNode root, int low, int high) {
-19        find(root,low,high);
-20        return ans;
-21
+17    public int rangeSumBST(TreeNode root, int low, int high) {
+18        if(root==null) return 0;
+19        if(root.val<low) return rangeSumBST(root.right,low,high);
+20        if(root.val>high) return rangeSumBST(root.left,low,high);
+21        return root.val+rangeSumBST(root.left,low,high)+rangeSumBST(root.right,low,high);
 22    }
-23    public void find(TreeNode root, int low, int high){
-24         if(root==null) return ;
-25         if(low<=root.val && root.val<=high) ans+=root.val;
-26         find(root.left,low,high);
-27         find(root.right,low,high);
-28    }
-29}
+23}
