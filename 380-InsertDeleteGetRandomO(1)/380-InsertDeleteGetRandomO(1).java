@@ -1,46 +1,57 @@
-// Last updated: 8/19/2026, 12:23:23 AM
-1class RandomizedCollection {
-2    Map<Integer,Integer> map;
-3    List<Integer> ls;
-4    int total;
-5    public RandomizedCollection() {
-6        map=new HashMap<>();
-7        ls=new ArrayList<>();
-8        total=0;
-9    }
-10    
-11    public boolean insert(int val) {
-12        ls.add(val);
-13        total++;
-14        if(!map.containsKey(val)){
-15            map.put(val,1);
-16            return true;
-17        }
-18        map.put(val,map.get(val)+1);
-19        return false;
+// Last updated: 8/19/2026, 12:53:54 AM
+1class AllOne {
+2    Map<String,Integer> map;
+3    TreeMap<Integer, Set<String>> freq;
+4    public AllOne() {
+5        map=new HashMap<>();
+6        freq = new TreeMap<>();
+7    }
+8    
+9    public void inc(String key) {
+10        int old=map.getOrDefault(key,0);
+11        int next=old + 1;
+12        map.put(key,next);
+13        if (old>0) {
+14            freq.get(old).remove(key);
+15            if (freq.get(old).isEmpty()) {
+16                freq.remove(old);
+17            }
+18        }
+19        freq.computeIfAbsent(next,k->new HashSet<>()).add(key);
 20    }
 21    
-22    public boolean remove(int val) {
-23        if(map.containsKey(val)){
-24            map.put(val,map.get(val)-1);
-25            if(map.get(val)==0) map.remove(val);
-26            ls.remove(Integer.valueOf(val));
-27            total--;
-28            return true;
-29        }
-30        return false;
-31    }
-32    
-33    public int getRandom() {
-34        int idx=(int)(Math.random()*total);
-35        return ls.get(idx);
+22    public void dec(String key) {
+23        int old=map.get(key);
+24        int next=old-1;
+25        freq.get(old).remove(key);
+26        if (freq.get(old).isEmpty()) {
+27            freq.remove(old);
+28        }
+29        if (next==0) {
+30            map.remove(key);
+31        }
+32        else {
+33            map.put(key,next);
+34            freq.computeIfAbsent(next,k->new HashSet<>()).add(key);
+35        }
 36    }
-37}
-38
-39/**
-40 * Your RandomizedCollection object will be instantiated and called as such:
-41 * RandomizedCollection obj = new RandomizedCollection();
-42 * boolean param_1 = obj.insert(val);
-43 * boolean param_2 = obj.remove(val);
-44 * int param_3 = obj.getRandom();
-45 */
+37    
+38    public String getMaxKey() {
+39        if(freq.isEmpty()) return "";
+40        return freq.lastEntry().getValue().iterator().next();
+41    }
+42    
+43    public String getMinKey() {
+44        if(freq.isEmpty()) return ""; 
+45        return freq.firstEntry().getValue().iterator().next();
+46    }
+47}
+48
+49/**
+50 * Your AllOne object will be instantiated and called as such:
+51 * AllOne obj = new AllOne();
+52 * obj.inc(key);
+53 * obj.dec(key);
+54 * String param_3 = obj.getMaxKey();
+55 * String param_4 = obj.getMinKey();
+56 */
