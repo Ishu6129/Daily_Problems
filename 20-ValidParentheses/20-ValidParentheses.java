@@ -1,29 +1,26 @@
-// Last updated: 31/07/2025, 19:42:11
-class Solution {
-    public boolean isValid(String s) {
-        if(s.length()<2){
-            return false;
-        }
-        Stack<Character> st=new Stack<>();
-        for(int i=0;i<s.length();i++){
-            char ch=s.charAt(i);
-            if(ch=='(' || ch=='[' || ch=='{' ){
-                st.push(ch);
-             }
-            else{
-                if(!st.isEmpty()){
-                    if(ch==')' && st.peek()=='(' || ch==']' && st.peek()=='[' || ch=='}' && st.peek()=='{'){
-                        st.pop();
-                    }
-                    else{
-                        return false;
-                    }
-                }
-                else{
-                    return false;
-                }
-        }
-     } 
-     return st.isEmpty();  
-    }
-}
+// Last updated: 10/1/2026, 12:10:07 PM
+1class Solution {
+2    public boolean isValid(String s) {
+3        if(s.length()<2){
+4            return false;
+5        }
+6        Stack<Character> st=new Stack<>();
+7        for(int i=0;i<s.length();i++){
+8            char ch=s.charAt(i);
+9            if(ch=='(' || ch=='[' || ch=='{' ){
+10                st.push(ch);
+11             }
+12            else{
+13                if(!st.isEmpty()){
+14                    char pk=st.peek();
+15                    if(ch==')' && pk=='(' || ch==']' && pk=='[' || ch=='}' && pk=='{'){
+16                        st.pop();
+17                    }
+18                    else return false;
+19                }
+20                else return false;
+21            }
+22        } 
+23        return st.isEmpty();  
+24    }
+25}
