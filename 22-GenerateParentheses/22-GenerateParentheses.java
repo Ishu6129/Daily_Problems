@@ -1,19 +1,21 @@
-// Last updated: 31/07/2025, 19:42:08
-class Solution {
-    public List<String> generateParenthesis(int n) {
-        List<String> list=new ArrayList<>();
-        generateParenthesis(n,0,0,"",list);
-        return list;
-    }
-     public static void generateParenthesis(int n,int closed,int open,String ans,List<String> list) {
-        if(open==n && closed==n){
-            list.add(ans);
-            return;
-        }
-        if(open>n || closed >open){
-            return;
-        }
-        generateParenthesis(n,closed,open+1,ans+"(",list);
-        generateParenthesis(n,closed+1,open,ans+")",list);
-    }
-}
+// Last updated: 10/2/2026, 4:57:08 PM
+1class Solution {
+2    int n;
+3    List<String> ans;
+4    public List<String> generateParenthesis(int n) {
+5        this.n=n;
+6        ans=new ArrayList<>();
+7        find(0,0,"");
+8        return ans;
+9    }
+10    public void find(int open,int close,String str){
+11        if(open==close && open==n){
+12            ans.add(str);
+13            return;
+14        }
+15
+16        if(open>n || close>open) return;
+17        find(open+1,close,str+'(');
+18        find(open,close+1,str+')');
+19    }
+20}
