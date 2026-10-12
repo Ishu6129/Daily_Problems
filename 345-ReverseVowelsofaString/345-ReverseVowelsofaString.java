@@ -1,20 +1,18 @@
-// Last updated: 10/12/2026, 10:17:04 PM
+// Last updated: 10/12/2026, 10:18:56 PM
 1class Solution {
 2    public String reverseVowels(String s) {
-3        char[] chArr=s.toCharArray();
-4        List<Integer> ls=new ArrayList<>();  
-5        int n=s.length();
-6        for(int i=0;i<n;i++){
-7            if("aeiouAEIOU".indexOf(chArr[i])!=-1) ls.add(i);
-8        }
-9        int len=ls.size();
-10        for(int i=0;i<len/2;i++){
-11            int first=ls.get(i);
-12            int last=ls.get(len-i-1);
-13            char temp=chArr[first];
-14            chArr[first]=chArr[last];
-15            chArr[last]=temp;
-16        }
-17        return (new String(chArr));
-18    }
-19}
+3        char[] arr=s.toCharArray();
+4        int left=0,right=arr.length-1;
+5        String vowels="aeiouAEIOU";
+6        while(left<right){
+7            while(left<right && vowels.indexOf(arr[left])==-1) left++;
+8            while(left<right && vowels.indexOf(arr[right])==-1) right--;
+9            char temp=arr[left];
+10            arr[left]=arr[right];
+11            arr[right]=temp;
+12            left++;
+13            right--;
+14        }
+15        return new String(arr);
+16    }
+17}
