@@ -1,4 +1,4 @@
-// Last updated: 10/14/2026, 5:28:42 PM
+// Last updated: 10/14/2026, 5:28:51 PM
 1class Solution {
 2    public String maxSumOfSquares(int num, int sum) {
 3        if(sum>(9*num)) return "";
@@ -8,7 +8,6 @@
 7            sb.append(dig);
 8            sum-=dig;
 9        }
-10        if(sum>0) return "";
-11        return sb.toString();
-12    }
-13}
+10        return sb.toString();
+11    }
+12}
